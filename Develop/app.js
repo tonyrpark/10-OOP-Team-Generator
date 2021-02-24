@@ -34,6 +34,169 @@ const PORT = process.env.PORT || 3000;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Employee Array Data
+const employees = [];
+const engineers = [];
+const interns = [];
+const managers = [];
+let id = 0;
+var response;
+
+// User Prompt --- QUESTIONS
+const promptUser = () => {
+  inquirer
+    .prompt([
+      {
+        type: "input",
+        message: "Name: ",
+        name: "name",
+      },
+      {
+        type: "input",
+        message: "Email: ",
+        name: "email",
+      },
+      {
+        type: "list",
+        name: "role",
+        message: "What is your position at the company?",
+        choices: ["Manager", "Engineer", "Intern"],
+      },
+    ])
+    .then(function (data) {
+      switch (data.role) {
+        case "Manager":
+          inquirer.prompt([
+              {
+                  type: "input",
+                  message: "Enter employee ID: ",
+                  name: "id"
+              },
+              {
+                  type: "input",
+                  message: "Enter office number: ", 
+                  name: "office"
+              }
+          ])
+          .then(function(res)) {
+              const officeNum = res.office; 
+              console.log(officeNum);
+              const manager = new Manager(
+                  data.name,
+                  res.id,
+                  data.email,
+                  officeNum,
+                  "Manager"
+              );
+              console.log(manager); 
+              employees.push(manager);
+
+          }).then(function(){
+              addNext()
+          });
+          break; 
+          case "Engineer": 
+          inquirer
+          .prompt([
+              {
+                  type: "input",
+                  message: "Enter employee ID: ",
+                  name: "id"
+              },
+              {
+                  type: "input",
+                  message: "Enter GitHub Username: ",
+                  name: "github"
+              }
+          ])
+          .then(function(res){
+              const githubName = res.github; 
+              const engineer = new Engineer(
+                  data.name,
+                  res.id,
+                  data.email,
+                  githubName,
+                  "Engineer"
+              );
+              employees.push(engineer);
+          }).then(function(){
+              addNext()
+          }); 
+          break;
+          case "Intern"; 
+          inquirer
+          .prompt([
+              {
+                  type:"input",
+                  message: "Enter employee ID: ", 
+                  name: "id" 
+              },
+              {
+                  type: "input",
+                  message: "Enter school: ",
+                  name: "school"
+              }
+          ])
+          .then(function(res){
+              const internSchool = res.school; 
+              const intern = new Intern(
+                  data.name,
+                  res.id,
+                  data.email,
+                  internSchool,
+                  "Intern"
+              );
+              employees.push(intern);
+          }).then(function(){
+              addNext()
+          });
+            break; 
+      }
+    })
+    .then(function(){
+
+    });
+};
+
+// Second part of Inquirer - adding additional employees
+
+const addNext = () => {
+    inquirer
+    .prompt([
+        {
+            type: "list",
+            name: "add",
+            message: "Would you like to add another Employee?",
+            choices: ["Yes","No"]
+        }
+    ])
+    .then(function(res){
+        if(res.add === "Yes" {
+            promptUser(); 
+        } else {
+            console.log("Your roster is complete!"); 
+            completedRoster(employees); 
+        }
+    });
+};
+
+function completedRoster(employees){
+    console.log("Success!");
+    console.log(employees); 
+    const html = generateHTML(employees); 
+    console.log(html); 
+    writeFileAsync("./output/employees.html", html, "utf-8"); 
+}
+
+function init(){
+    console.log("Please enter employee info")
+    promptUser(); 
+}
+
+init(); 
+
+// require("./output/employees.html")(app); 
+
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
