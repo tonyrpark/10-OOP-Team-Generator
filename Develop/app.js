@@ -1,3 +1,4 @@
+//Create variables
 const inquirer = require("inquirer");
 const jest = require("jest");
 const fs = require("fs");
@@ -18,12 +19,11 @@ const Intern = require("./lib/Intern.js");
 const Manager = require("./lib/Manager.js");
 const generateHTML = require("./output/generateHTML.js");
 
-// Sets up the Express App
-// =============================================================
+//Express app setup
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Sets up the Express app to handle data parsing
+//Adds urlencoding and parses json
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -35,6 +35,7 @@ const managers = [];
 let id = 0;
 var response;
 
+//Prompts user, uses switch-case to allow for each job property
 const promptUser = () => {
   inquirer
     .prompt([
