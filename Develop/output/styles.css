@@ -17,8 +17,10 @@
   font-style: normal;
   font-size: 1.4em;
   text-align: center;
+  color: white;
 }
 
 .card-body {
   font-style: normal;
+  font-family: "Ubuntu";
 }
