@@ -1,0 +1,24 @@
+.jumbotron {
+  background-image: url(../../Assets/images/background5.jpg);
+  height: 400px;
+  font-family: "Merriweather";
+  letter-spacing: 20px;
+}
+
+.text-center {
+  padding-top: 95px;
+  font-weight: 900;
+  color: #383e56;
+  font-size: 4.5em;
+}
+
+.card-header {
+  font-family: "Ubuntu";
+  font-style: normal;
+  font-size: 1.4em;
+  text-align: center;
+}
+
+.card-body {
+  font-style: normal;
+}
