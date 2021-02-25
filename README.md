@@ -1,7 +1,9 @@
-1. GIF of Team Generator
+1. Screenshot of Final Product
+   ![Final Product](./Assets/images/screenshot.PNG)
+2. GIF of Team Generator
    ![Team Generator GIF](./Assets/images/teamGen.gif)
-2. GIF of Passing Test
-   ![Team Generator GIF](./Assets/images/test.gif)
+3. GIF of Passing Test
+   ![Passing Test GIF](./Assets/images/test.gif)
 
 # Main files:
 
