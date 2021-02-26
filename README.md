@@ -4,6 +4,8 @@
    ![Team Generator GIF](./Assets/images/teamGen.gif)
 3. GIF of Passing Test
    ![Passing Test GIF](./Assets/images/test.gif)
+4. GIF of app.js in Action
+   ![Passing Test GIF](./Assets/images/appJS.gif)
 
 # Main files:
 
